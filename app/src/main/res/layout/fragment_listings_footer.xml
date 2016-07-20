@@ -1,0 +1,26 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/listings_footer_layout"
+    tools:ignore="ButtonStyle"
+    tools:context=".ListingsFooterFragment">
+
+    <Button
+        android:id="@+id/public_filter_button"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="64dp"
+        android:text="@string/public_filter_button"
+        android:visibility="visible" />
+
+    <Button
+        android:id="@+id/internal_filter_button"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="64dp"
+        android:text="@string/internal_filter_button"
+        android:visibility="visible" />
+
+</LinearLayout>

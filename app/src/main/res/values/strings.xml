@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Investorx</string>
+    <string name="watching_filter_button">Watching</string>
+    <string name="all_filter_button">All</string>
+    <string name="public_filter_button">Public</string>
+    <string name="internal_filter_button">Internal</string>
+</resources>
