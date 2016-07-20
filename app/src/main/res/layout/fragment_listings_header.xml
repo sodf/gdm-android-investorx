@@ -13,7 +13,7 @@
         android:layout_width="0dp"
         android:layout_height="64dp"
         android:text="@string/watching_filter_button"
-        android:visibility="visible" />
+        android:visibility="invisible" />
 
     <Button
         android:id="@+id/all_public_filter_button"
@@ -21,7 +21,7 @@
         android:layout_width="0dp"
         android:layout_height="64dp"
         android:text="@string/all_filter_button"
-        android:visibility="visible" />
+        android:visibility="invisible" />
 
     <Button
         android:id="@+id/watching_internal_filter_button"

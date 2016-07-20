@@ -2,6 +2,7 @@ package gdm.android.investorx;
 
 import android.app.FragmentManager;
 import android.app.ListFragment;
+import android.graphics.Color;
 import android.support.v4.widget.TextViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,7 +16,6 @@ public class ListingsActivity extends AppCompatActivity implements ListingsHeade
 
     Filter.Main mainFilter;
     protected ListFragment activeListFragment;
-    ListingsHeaderFragment headerFragment;
     ListingsFooterFragment footerFragment;
     protected PublicFragment publicFragment;
     protected InternalFragment internalFragment;
@@ -29,13 +29,15 @@ public class ListingsActivity extends AppCompatActivity implements ListingsHeade
         setContentView(R.layout.activity_listing);
 
         FragmentManager fm = getFragmentManager();
-        headerFragment = (ListingsHeaderFragment) fm.findFragmentById(R.id.fragment_listings_header);
         footerFragment = (ListingsFooterFragment) fm.findFragmentById(R.id.fragment_listings_footer);
         publicFragment = (PublicFragment) fm.findFragmentById(R.id.fragment_publiclist);
         internalFragment = (InternalFragment) fm.findFragmentById(R.id.fragment_internallist);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setBackgroundColor(Color.WHITE);
         toolbarTitle = (TextView) toolbar.findViewById(R.id.toolbar_title);
+
+        onMainFilterChange(Filter.Main.PUBLIC);
     }
 
     @Override
@@ -46,22 +48,17 @@ public class ListingsActivity extends AppCompatActivity implements ListingsHeade
     @Override
     public void onMainFilterChange(Filter.Main filterType) {
         mainFilter = filterType;
+        setToolbarTitle();
 
-        Map<Filter.Main, Filter.Secondary> filterMap = headerFragment.getFilterMap();
         if (filterType == Filter.Main.PUBLIC) {
             publicFragment.setVisibility(View.VISIBLE);
             activeListFragment = publicFragment;
             internalFragment.setVisibility(View.GONE);
         } else if (filterType == Filter.Main.INTERNAL) {
-            internalFragment.setVisibility(View.GONE);
+            internalFragment.setVisibility(View.VISIBLE);
             activeListFragment = internalFragment;
             publicFragment.setVisibility(View.GONE);
         }
-        updateHeader(filterType);
-    }
-
-    protected void updateHeader(Filter.Main filterType) {
-        headerFragment.updateSubNavButtonVisibility(filterType);
     }
 
     private void setToolbarTitle() {

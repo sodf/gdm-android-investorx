@@ -2,6 +2,7 @@ package gdm.android.investorx;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +27,9 @@ public class ListingsFooterFragment extends Fragment {
         publicButton.setOnClickListener(new FilterButtonListener(Filter.Main.PUBLIC));
         internalButton.setOnClickListener(new FilterButtonListener(Filter.Main.INTERNAL));
 
+        publicButton.setTextColor(Color.parseColor("#00a63f"));
+        internalButton.setTextColor(Color.parseColor("#999999"));
+
         return rootView;
 
     }
@@ -49,8 +53,12 @@ public class ListingsFooterFragment extends Fragment {
 
         if (Filter.Main.PUBLIC == filterType) {
             currentlyActiveButton = publicButton;
+            publicButton.setTextColor(Color.parseColor("#00a63f"));
+            internalButton.setTextColor(Color.parseColor("#999999"));
         } else if (Filter.Main.INTERNAL == filterType) {
             currentlyActiveButton = internalButton;
+            internalButton.setTextColor(Color.parseColor("#00a63f"));
+            publicButton.setTextColor(Color.parseColor("#999999"));
         }
         this.filterType = filterType;
         currentlyActiveButton.setActivated(true);
